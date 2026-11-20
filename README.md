@@ -1,3 +1,4 @@
+[![QA Automation CI](https://github.com/AKanimozhi-QA-Automation/QA-Automation-Portfolio/actions/workflows/qa-tests.yml/badge.svg)](https://github.com/AKanimozhi-QA-Automation/QA-Automation-Portfolio/actions/workflows/qa-tests.yml)
 # QA Automation Portfolio | A. Kanimozhi
 
 **Python · Playwright · Pytest · Selenium · UI Regression Testing**
