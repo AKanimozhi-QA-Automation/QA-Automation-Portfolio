@@ -1,0 +1,188 @@
+{
+  "info": {
+    "_postman_id": "7df934f5-e298-490c-8482-765ca1d477d9",
+    "name": "REST API Automation Testing - Postman",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57268719",
+    "_collection_link": "https://go.postman.co/collection/57268719-7df934f5-e298-490c-8482-765ca1d477d9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET User by ID - Positive Test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"GET User - Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"GET User - ID is 1\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.id).to.eql(1);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/users/1",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET User by ID - Negative Test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\n\r\npm.test(\"GET Invalid User - Status code is 404\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"GET Invalid User - Response body is empty object\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response).to.deep.equal({});\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/users/99999",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "users",
+            "99999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Create New Post - Positive Test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"POST - Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"POST - Response contains ID\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response).to.have.property(\"id\");\r\n});\r\n\r\npm.test(\"POST - Response data matches request\", function () {\r\n    const response = pm.response.json();\r\n    const request = JSON.parse(pm.request.body.raw);\r\n\r\n    pm.expect(response.title).to.eql(request.title);\r\n    pm.expect(response.body).to.eql(request.body);\r\n    pm.expect(response.userId).to.eql(request.userId);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"QA Automation Portfolio Project\",\r\n  \"body\": \"API Testing using Postman with automated validations\",\r\n  \"userId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Update Post - Positive Test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"PUT - Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"PUT - Response matches updated data\", function () {\r\n    const response = pm.response.json();\r\n    const request = JSON.parse(pm.request.body.raw);\r\n\r\n    pm.expect(response.id).to.eql(request.id);\r\n    pm.expect(response.title).to.eql(request.title);\r\n    pm.expect(response.body).to.eql(request.body);\r\n    pm.expect(response.userId).to.eql(request.userId);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\r\n{\r\n  \"id\": 1,\r\n  \"title\": \"Updated QA Automation Portfolio\",\r\n  \"body\": \"PUT API testing using Postman\",\r\n  \"userId\": 1\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Post - Positive Test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"DELETE - Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"DELETE - Response body is empty object\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response).to.deep.equal({});\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
