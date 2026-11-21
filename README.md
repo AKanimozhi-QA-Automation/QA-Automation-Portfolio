@@ -84,3 +84,30 @@ Third-party demo UI may change. Selenium test requires local Chrome/ChromeDriver
 ## Suggested next improvements
 
 Add screenshot-on-failure hooks, cross-browser matrix, environment configuration, and an API test suite using a public test API. Record real execution evidence before describing test results in applications.
+## REST API Automation Testing – Postman
+
+**API:** JSONPlaceholder (Public Demo API)
+
+**Tools:** Postman, JavaScript Assertions, Collection Runner
+
+### API Test Coverage
+
+- GET User by ID – Positive Test
+- GET User by ID – Negative Test (404 validation)
+- POST Create New Post – Positive Test
+- PUT Update Post – Positive Test
+- DELETE Post – Positive Test
+
+### Verified Postman Collection Runner Results
+
+| Metric | Result |
+|---|---|
+| API Requests | 5 |
+| Assertions Passed | 11 |
+| Assertions Failed | 0 |
+| Iterations | 1 |
+| Execution | Postman Collection Runner (Local) |
+
+**Collection File:** [REST_API_Automation.postman_collection.json](REST_API_Automation.postman_collection.json)
+
+**Note:** These results were verified using Postman's local Collection Runner. Postman API tests are not yet integrated into GitHub Actions CI.
