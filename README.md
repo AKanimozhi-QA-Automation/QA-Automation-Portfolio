@@ -110,4 +110,13 @@ Add screenshot-on-failure hooks, cross-browser matrix, environment configuration
 
 **Collection File:** [REST_API_Automation.postman_collection.json](REST_API_Automation.postman_collection.json)
 
-**CI/CD Integration:** Postman REST API tests are integrated into GitHub Actions using Newman. Both Playwright UI tests and Newman API tests successfully passed in GitHub Actions CI (Run #7, Commit 29be8e3).
+
+**CI/CD Integration:** Playwright UI automation and Postman REST API automation are integrated into GitHub Actions.
+
+**Latest Verified CI Run:** #11 | Commit: `18c1fc4` | Status: SUCCESS
+
+- **Playwright UI Tests:** 5 Passed, 0 Failed
+- **Newman API Tests:** 5 Requests, 11 Assertions Passed, 0 Failed
+- **HTML Reports:** Both Playwright and Newman HTML reports are generated and uploaded as GitHub Actions artifacts.
+
+[View Successful GitHub Actions Run #11](https://github.com/AKanimozhi-QA-Automation/QA-Automation-Portfolio/actions/runs/45020749944)
