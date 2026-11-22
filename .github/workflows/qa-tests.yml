@@ -43,7 +43,14 @@ jobs:
           node-version: '22'
 
       - name: Install Newman
-        run: npm install -g newman
+       run: npm install -g newman newman-reporter-htmlextra
 
       - name: Run Postman API Tests
-        run: newman run REST_API_Automation.postman_collection.json
+        run: newman run REST_API_Automation.postman_collection.json -r cli,htmlextra --reporter-htmlextra-export reports/newman-api-report.html
+      - name: Upload Newman HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-api-html-report
+          path: reports/newman-api-report.html
+          if-no-files-found: warn
