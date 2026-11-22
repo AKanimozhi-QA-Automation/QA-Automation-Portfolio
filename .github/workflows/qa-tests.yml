@@ -1,4 +1,6 @@
+
 name: QA Automation Demo
+
 on:
   workflow_dispatch:
   push:
@@ -10,15 +12,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - name: Install dependencies
         run: |
           python -m pip install -r requirements.txt
           python -m playwright install --with-deps chromium
+
       - name: Run Playwright tests
         run: python -m pytest -m playwright
+
       - name: Upload HTML report
         if: always()
         uses: actions/upload-artifact@v4
@@ -26,3 +32,18 @@ jobs:
           name: playwright-html-report
           path: reports/report.html
           if-no-files-found: warn
+
+  api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Postman API Tests
+        run: newman run REST_API_Automation.postman_collection.json
