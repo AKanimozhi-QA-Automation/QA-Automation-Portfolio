@@ -110,4 +110,4 @@ Add screenshot-on-failure hooks, cross-browser matrix, environment configuration
 
 **Collection File:** [REST_API_Automation.postman_collection.json](REST_API_Automation.postman_collection.json)
 
-**Note:** These results were verified using Postman's local Collection Runner. Postman API tests are not yet integrated into GitHub Actions CI.
+**CI/CD Integration:** Postman REST API tests are integrated into GitHub Actions using Newman. Both Playwright UI tests and Newman API tests successfully passed in GitHub Actions CI (Run #7, Commit 29be8e3).
